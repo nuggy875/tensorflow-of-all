@@ -1,3 +1,11 @@
 # tensorlow-of-all 
 
-## 모두의 텐서플로우 공부공간
+## schedule
+
+1. 머신러닝의 개념과 용어 (2018.03.23)
+
+2. Linear Regression 의 개념
+
+3. Linear Regression cost 함수 최소화
+
+## 공부방법

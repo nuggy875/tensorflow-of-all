@@ -8,4 +8,4 @@
 
 3. Linear Regression cost 함수 최소화
 
-## 공부방법
+## 공부방법법

@@ -6,6 +6,12 @@
 
 2. Linear Regression 의 개념 (2018.03.28)
 
-3. Linear Regression cost 함수 최소화
+3. Linear Regression cost 함수 최소화 (2018.05.09)
 
-## 공부방법법
+## 공부방법
+
+ 1. 강의를 열심히 듣는다.
+
+ 2. 정리를 한다 (note)
+
+ 3. 복습을 한다

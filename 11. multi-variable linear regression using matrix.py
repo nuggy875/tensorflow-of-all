@@ -1,5 +1,5 @@
 # 11. multi-variable linear regression using matrix
-# strength of using matrix is var의 갯수와 상관없이 쉽게 사용 할 수 있다. 
+# strength of using matrix is var의 갯수와 상관없이 쉽게 사용 할 수 있다.
 
 import tensorflow as tf
 # data setting #

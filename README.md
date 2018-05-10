@@ -8,6 +8,8 @@
 
 3. Linear Regression cost 함수 최소화 (2018.05.09)
 
+4. multi-variable linear regression (2018.05.10)
+
 ## 공부방법
 
  1. 강의를 열심히 듣는다.

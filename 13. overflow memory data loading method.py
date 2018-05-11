@@ -51,6 +51,10 @@ threads = tf.train.start_queue_runners(sess=sess, coord=coord)
 
 for step in range(2001):
     x_batch, y_batch = sess.run([train_x_batch, train_y_batch])
+
+    print(x_batch)
+    # print(y_batch)
+
     cost_val, hy_val, _ = sess.run(
         [cost, hypothesis, train],
         feed_dict={X: x_batch, Y: y_batch})

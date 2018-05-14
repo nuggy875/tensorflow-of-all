@@ -8,7 +8,11 @@
 
 3. Linear Regression cost 함수 최소화 (2018.05.09)
 
-4. multi-variable linear regression (2018.05.10)
+4. Multi-variable linear regression (2018.05.10)
+
+5. Logistic regression (2018.05.11)
+
+6. Soft-max classifier (2018.05.14)
 
 ## 공부방법
 

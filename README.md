@@ -14,6 +14,8 @@
 
 6. Soft-max classifier (2018.05.14)
 
+7. Application and Tips : Learning rate and Test data set (2018.05.16) (19 ~ 22)
+
 ## 공부방법
 
  1. 강의를 열심히 듣는다.

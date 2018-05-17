@@ -16,6 +16,8 @@
 
 7. Application and Tips : Learning rate and Test data set (2018.05.16) (19 ~ 22)
 
+8. Deep learning and tensor manipulation (2018.05.17) (23)
+
 ## 공부방법
 
  1. 강의를 열심히 듣는다.

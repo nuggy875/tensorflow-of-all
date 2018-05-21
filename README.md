@@ -18,6 +18,8 @@
 
 8. Deep learning and tensor manipulation (2018.05.17) (23)
 
+9. Back propagation (2018.05.21) (24 ~ 28)
+
 ## 공부방법
 
  1. 강의를 열심히 듣는다.

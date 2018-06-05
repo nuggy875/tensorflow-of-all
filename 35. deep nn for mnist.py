@@ -1,0 +1,86 @@
+# 34. mnist test using three layers and adam and drop out
+
+import tensorflow as tf
+from tensorflow.examples.tutorials.mnist import input_data
+
+# Set data #
+# Check out https://www.tensorflow.org/get_started/mnist/beginners
+# for more information about the mnist dataset
+mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)
+
+# build graph #
+X = tf.placeholder(dtype=tf.float32, shape=[None, 784])
+Y = tf.placeholder(dtype=tf.float32, shape=[None, 10])
+
+# model - 3 layers model #
+keep_prob = tf.placeholder(tf.float32)
+
+# first layer
+W1 = tf.get_variable("W1", shape=[784, 512], initializer=tf.contrib.layers.xavier_initializer())
+b1 = tf.Variable(initial_value=tf.random_normal([512]))
+L1 = tf.nn.relu(tf.matmul(X, W1) + b1)
+L1 = tf.nn.dropout(L1, keep_prob=keep_prob)
+
+# second layer
+W2 = tf.get_variable("W2", shape=[512, 512], initializer=tf.contrib.layers.xavier_initializer())
+b2 = tf.Variable(initial_value=tf.random_normal([512]))
+L2 = tf.nn.relu(tf.matmul(L1, W2) + b2)
+L2 = tf.nn.dropout(L2, keep_prob=keep_prob)
+
+# third layer
+W3 = tf.get_variable("W3", shape=[512, 512], initializer=tf.contrib.layers.xavier_initializer())
+b3 = tf.Variable(initial_value=tf.random_normal([512]))
+L3 = tf.nn.relu(tf.matmul(L2, W3) + b3)
+L3 = tf.nn.dropout(L3, keep_prob=keep_prob)
+
+# fourth layer
+W4 = tf.get_variable("W4", shape=[512, 512], initializer=tf.contrib.layers.xavier_initializer())
+b4 = tf.Variable(initial_value=tf.random_normal([512]))
+L4 = tf.nn.relu(tf.matmul(L3, W4) + b4)
+L4 = tf.nn.dropout(L4, keep_prob=keep_prob)
+
+# fifth layer
+W5 = tf.get_variable("W5", shape=[512, 10], initializer=tf.contrib.layers.xavier_initializer())
+b5 = tf.Variable(initial_value=tf.random_normal([10]))
+hypothesis = tf.matmul(L4, W5) + b5
+
+# cost/ loss
+cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=hypothesis, labels=Y))
+# minimize cost
+optimizer = tf.train.AdamOptimizer(learning_rate=0.001)
+train = optimizer.minimize(cost)
+
+# 그런데 xavier 쓰고 싶은데?
+
+# test model
+is_correct = tf.equal(tf.arg_max(hypothesis, 1), tf.arg_max(Y, 1))
+# calculate accuracy
+accuracy = tf.reduce_mean(tf.cast(is_correct, tf.float32))
+
+# Launch graph #
+# parameters
+
+# epoch is one pass of all the training set
+training_epochs = 15
+# batch is the number of learning set at once.
+batch_size = 100
+# iteration is total /batch_size
+
+with tf.Session() as sess:
+    sess.run(tf.global_variables_initializer())
+    for epoch in range(training_epochs):
+        avg_cost = 0
+        total_batch = int(mnist.train.num_examples/batch_size)
+        for i in range(total_batch):
+            batch_xs, batch_ys = mnist.train.next_batch(batch_size)
+            c, _ = sess.run([cost, train], feed_dict={X: batch_xs, Y: batch_ys, keep_prob: 0.7})
+            avg_cost += c / total_batch
+
+        print('Epoch:', '%04d' % (epoch + 1), 'cost = ', '{:.9f}'.format(avg_cost))
+
+    # Test the model using test sets
+    print('Learning Finished!')
+    # tensor.eval()
+    print("Accuracy: ", accuracy.eval(session=sess, feed_dict={
+        X: mnist.test.images, Y: mnist.test.labels, keep_prob: 1}))
+
